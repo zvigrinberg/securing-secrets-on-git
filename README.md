@@ -14,25 +14,28 @@
 
 [zgrinber@zgrinber securing-secrets-on-git]$ sudo yum install gpg
 ```
-3. Connect ot our Tel-Aviv OCP cluster 
-4. Now run the script `download_keys.sh` resides in this repo, with the namespace and secretname parameters you were given
+
+2. Connect to our Tel-Aviv OCP cluster.
+3. Now run the script `download_keys.sh` resides in this repo, with the namespace and secretname parameters you were given
    in order to download our group' pair of public and private keys to current directory
 ```shell
 [zgrinber@zgrinber securing-secrets-on-git]$ ./download_keys.sh <namespace> <secretname>
 ```
-5.Make sure that 2 new keys were created:
+
+4 .Make sure that 2 new keys were created:
 ```shell
 [zgrinber@zgrinber securing-secrets-on-git]$ ls -la *.gpg
 -rw-rw-r--. 1 zgrinber zgrinber 3518 Apr  6 23:33 private.gpg
 -rw-rw-r--. 1 zgrinber zgrinber 1753 Apr  6 23:33 public.gpg
 ```
+5. Logout from tel-aviv openshift cluster(not mandatory but recommended).
 6. Import the public key to GPG utility:
 ```shell
 [zgrinber@zgrinber securing-secrets-on-git]$ gpg --import public.gpg
 ```
 7. Import the private key to GPG utility:
 ```shell
-[zgrinber@zgrinber securing-secrets-on-git]$ gpg --import private.gpg
+[zgrinber@zgrinber securing-secrets-on-git]$ gpg --allow-secret-key-import --import private.gpg
 ```
 8. make sure that keys imported to GnuPG
 ```shell

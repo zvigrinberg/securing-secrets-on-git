@@ -66,7 +66,7 @@ or use environment variable $SOPS_PGP_FP to hold the FP before invoking sops enc
 ```
 or invoke the last command from a directory containing the .sops.yaml file here(which contains this fingerprint)
 
-2.In order to encrypt only part of the file, can supply another flag to the command to encrypt only fields the follow some regex pattern, for example:
+2.In order to encrypt only part of the file, can supply another flag to the command to encrypt only fields that follows some regex pattern, for example:
 ```shell
 [zgrinber@zgrinber securing-secrets-on-git]$ sops --encrypt --in-place --encrypted-regex 'password|pin|user|secret' --pgp 650C42E2EEFF28EFFCEC654E49B14A9331479A7C file.yaml
 ```
